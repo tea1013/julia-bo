@@ -8,16 +8,16 @@ using Plots
 using GaussianProcesses
 using Optim
 
-f = Forrester()
+const f = Forrester()
 
 X = rand(Uniform(0, 1), 5)
 y = Float64[]
 for x in X
      push!(y, value(f, x))
 end
-noise_var = -2.0
+const noise_var = -2.0
 
-iterationnum = 30
+const iterationnum = 30
 for i in 1:iterationnum
   gp_model = GP(X, y, MeanZero(), SE(-2.0, 0.0), noise_var)
 

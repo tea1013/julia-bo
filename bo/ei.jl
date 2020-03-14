@@ -12,7 +12,7 @@ end
 
 function acquire(ei::EI, x)
   if x[1] in ei.model.x
-    return 0
+    return zero(x[1])
   end
 
   mean, var = predict_y(ei.model, reshape(x, length(x), 1))
@@ -20,7 +20,7 @@ function acquire(ei::EI, x)
   std = sqrt(var[1])
 
   if std == 0
-    return 0
+    return zero(x[1])
   end
 
   Z = (mu - ei.ymax - ei.xi) / std

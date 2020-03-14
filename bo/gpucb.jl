@@ -11,7 +11,7 @@ end
 
 function acquire(gpucb::GPUCB, x)
   if x[1] in gpucb.model.x
-    return 0
+    return zero(x[1])
   end
 
   mean, var = predict_y(gpucb.model, reshape(x, length(x), 1))
